@@ -1,0 +1,31 @@
+/* Center the text and add space around the header */
+h1 {
+    color: #e0f7fa;
+    text-align: center;
+}
+
+/* Styling for the buttons */
+.btn-warning {
+    background-color: #f39c12;
+    border-color: #e67e22;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+
+/* Card-specific styles */
+.card {
+    border-radius: 15px;
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Ensure a consistent height for card bodies */
+.card-body {
+    min-height: 150px;
+}

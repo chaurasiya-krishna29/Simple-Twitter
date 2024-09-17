@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %} <!-- Load the static template tag library -->
+
+{% block title %}
+Tweets List
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Hello From Krishna......</h1>
+        <a class="btn btn-primary" href="{% url 'tweet_create' %}">Create a tweet</a>
+    </div>
+
+    <!-- Bootstrap grid for better card layout -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for tweet in tweets %}
+        <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+                
+                <!-- Card Image occupying fixed space -->
+                <div class="card-img-container">
+                    {% if tweet.photo %}
+                    <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet Image">
+                    {% else %}
+                    <img src="{% static 'default-placeholder.png' %}" class="card-img-top" alt="Default Image">
+                    {% endif %}
+                </div>
+
+                <!-- Card Content occupying specific part -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ tweet.user.username }}</h5>
+                    <p class="card-text">{{ tweet.text }}</p>
+                </div>
+
+                <!-- Card Footer with full-width buttons -->
+                <div class="card-footer bg-transparent p-0">
+                    <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-sm btn-warning w-100">Edit</a>
+                    <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-sm btn-danger w-100 mt-1">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No tweets available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

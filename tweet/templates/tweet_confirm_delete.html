@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+    Delete Tweet
+{% endblock %}
+
+{% block content %}
+<!-- Center the card in the middle of the page -->
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card shadow-lg p-4 text-center" style="width: 30rem;">
+        <h1 class="card-title text-danger mb-4">Are you sure?</h1>
+        <p class="card-text mb-4">
+            Do you really want to delete this tweet? This action cannot be undone.
+        </p>
+        
+        <!-- Form for deletion with centered buttons -->
+        <form method="post" class="d-flex justify-content-around">
+            {% csrf_token %}
+            <button class="btn btn-danger px-4 py-2">Delete</button>
+            <a class="btn btn-secondary px-4 py-2" href="{% url 'tweet_list' %}">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
