@@ -33,12 +33,14 @@ Tweets List
                     <h5 class="card-title">{{ tweet.user.username }}</h5>
                     <p class="card-text">{{ tweet.text }}</p>
                 </div>
-
+                {% if tweet.user == user %}
+                  
                 <!-- Card Footer with full-width buttons -->
                 <div class="card-footer bg-transparent p-0">
                     <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-sm btn-warning w-100">Edit</a>
                     <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-sm btn-danger w-100 mt-1">Delete</a>
                 </div>
+                {% endif %}
             </div>
         </div>
         {% empty %}
